@@ -2,8 +2,8 @@
 
 CPlayScreen::CPlayScreen() :CScreen()
 {
+	_isPause =false;
 	_isStopScreen = false;
-	_isPause = false;
 	_rockman.Initlize();
 	_changingScreen = 0;
 	_pointAfterDoor = Vector2(0, 0);
@@ -64,7 +64,6 @@ void CPlayScreen::Update(CGameTime* gameTime)
 {
 	if (!_isPause)
 	{
-		///Nếu của sổ chọn skill đang mở
 		if (_isChosingSkill)
 		{
 			_isChosingSkill = false;
@@ -81,6 +80,7 @@ void CPlayScreen::Update(CGameTime* gameTime)
 					i -= 1;
 					break;
 			}
+
 			switch (_rockman.GetCurrentSkill())
 			{
 			case Skill::CUT:
@@ -147,8 +147,9 @@ void CPlayScreen::Update(CGameTime* gameTime)
 						}
 					if (!exited)
 						_items.push_back(((CItem*)(*objs)[i])->ToValue());
-					break;
+				break;
 				}
+				
 			case ID_ELEVATOR_TROUBLE:
 			case ID_ELEVATOR:
 				if (_changingScreen == 2 || (_changingScreen == 0 && !(*objs)[i]->GetBox().IntersecWith(_camera->GetViewport())) || _playState == PlayState::READY)
