@@ -1,6 +1,0 @@
-#Special_Skill_Info
-3
-cut
-boom
-guts
-#Special_Skill_Info_end
